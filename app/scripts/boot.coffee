@@ -1,24 +1,7 @@
-loadDisqus = ->
-  window.disqus_url = "https://orsenthil.github.io/cmx.js/"
-  window.disqus_url += "gist/#{window.gistId}" if window.gistId
-
-  wrapper = $("<div/>").attr('id', "disqus_thread")
-  if window.gistId
-    $('#comix').append(wrapper)
-  else
-    $('.discussion').prepend(wrapper)
-
-  dsq = document.createElement("script")
-  dsq.type = "text/javascript"
-  dsq.async = true
-  dsq.src = "http://cmxio.disqus.com/embed.js"
-  (document.getElementsByTagName("head")[0] or document.getElementsByTagName("body")[0]).appendChild dsq
-
 displayHomepage = ->
   $('html').addClass 'force-vscrollbar'
   $("#homepage").css "display", "block"
   _gaq.push ['_trackPageview'] # standard pageview
-  loadDisqus()
 
 loadAndDisplayGist = (gistId) ->
   $("#comix-spinner").show()
@@ -99,8 +82,6 @@ loadAndDisplayGist = (gistId) ->
 
     description = description.split("\n")[0]
 
-    window.disqus_title = description or "Comix ##{gistId}"
-
     $stage = $("<iframe/>",
       class: "stage"
       scrolling: "no"
@@ -152,8 +133,6 @@ loadAndDisplayGist = (gistId) ->
           $comix.css width:"#{rW}px"
           $placeholder.css width:"#{rW}px"
 
-          loadDisqus()
-
     # we need to show comix div with SVG elements,
     # getBBox calls on display:none elements throws on Firefox
     # https://bugzilla.mozilla.org/show_bug.cgi?id=612118
@@ -171,10 +150,6 @@ loadAndDisplayGist = (gistId) ->
 $ ->
 
   hash = location.hash.substring(1)
-
-  # disqus uses #comment-12345 style hashes
-  if hash.match /^comment/
-    hash = undefined
 
   if hash
     loadAndDisplayGist(hash)
