@@ -2,7 +2,7 @@
   font-family: 'xkcd';
   font-style: normal;
   font-weight: normal;
-  src: local('xkcd'),url('/fonts/humor-sans.ttf');
+  src: url('../fonts/xkcd-script.ttf') format('truetype');
 }
 
 body {
