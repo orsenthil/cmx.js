@@ -1,5 +1,5 @@
 loadDisqus = ->
-  window.disqus_url = "http://cmx.io/"
+  window.disqus_url = "https://orsenthil.github.io/cmx.js/"
   window.disqus_url += "gist/#{window.gistId}" if window.gistId
 
   wrapper = $("<div/>").attr('id', "disqus_thread")
