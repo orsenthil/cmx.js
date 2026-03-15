@@ -4,7 +4,7 @@
 
   loadDisqus = function() {
     var dsq, wrapper;
-    window.disqus_url = "http://cmx.io/";
+    window.disqus_url = "https://orsenthil.github.io/cmx.js/";
     if (window.gistId) {
       window.disqus_url += "gist/" + window.gistId;
     }
